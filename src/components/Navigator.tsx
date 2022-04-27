@@ -10,8 +10,9 @@ function Navigator ({ memoList, handleMemoTitleClick }) {
           {
             memoList.allIds.map((memoId) => {
               return (
-                <div key={memoId} className="w-10/12 my-3 mx-auto text-center">
-                  <span className=" hover:font-semibold cursor-pointer" onClick={(e) => handleMemoTitleClick(memoId)}>
+                <div key={memoId} className="w-full py-3 text-center hover:font-semibold cursor-pointer hover:bg-red-400" onClick={(e) => handleMemoTitleClick(memoId)}>
+                  <span
+                  >
                     {memoList.byId[memoId].title}
                   </span>
                 </div>

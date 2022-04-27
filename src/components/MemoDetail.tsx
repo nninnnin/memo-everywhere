@@ -1,12 +1,10 @@
 export default function ({ memo }) {
-  console.log(memo)
-
   return (
-    <div className="main bg-slate-400 flex-1">
+    <div className="main bg-green-400 flex-1">
           {
             <div>
-              <h2>{memo.title}</h2>
-              <p>{memo.contents}</p>
+              <h2 className="text-2xl p-4">{memo.title}</h2>
+              <p className="p-4">{memo.contents}</p>
             </div>
           }
         </div>

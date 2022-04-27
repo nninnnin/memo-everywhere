@@ -33,9 +33,13 @@ function App() {
   }, []);
 
   return (
-    <div className="bg-slate-500 text-white w-screen h-screen flex flex-col">
-      <header className="p-10 flex justify-between">
-        <h1 className="text-3xl font-bold underline">Memo everywhere!</h1>
+    <div className="bg-blue-500 text-white w-screen h-screen flex flex-col">
+      <header className="p-10 flex justify-between items-center">
+        <h1 className="text-3xl font-bold underline">
+          Memo everywhere!
+        </h1>
+
+        <span>currently doing => 꿈꿔 그리구 숨셔</span>
 
         <span className="login">로그아웃하기</span>
       </header>
