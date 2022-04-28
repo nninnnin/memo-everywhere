@@ -1,18 +1,26 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, nanoid } from "@reduxjs/toolkit";
 
-type Memo = {
+interface Memo {
   title: string;
   contents: string;
-};
+}
 
-const initialState: Memo[] = [];
+const initialState: Array<Memo> = [];
 
 const memoSlice = createSlice({
   name: "memo",
   initialState,
   reducers: {
-    create(state, action) {
-      state.push(action.payload);
+    create: {
+      reducer: (state, action: PayloadAction<Memo>) => {
+        state.push(action.payload);
+      },
+      prepare: (memo: Memo) => {
+        // prepare callback function
+        const id = nanoid();
+
+        return { payload: { id, ...memo } };
+      },
     },
   },
 });
