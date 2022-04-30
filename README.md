@@ -29,3 +29,24 @@
 - 배포 및 사용
 
 ---
+
+에러 노트
+
+- Cannot use JSX unless the "--jsx" flag is provided.
+
+  - tsconfig의 compilerOptions에 "./src/\*_/_.ts" 라는 경로를 추가해주었다.
+  - https://stackoverflow.com/questions/50432556/cannot-use-jsx-unless-the-jsx-flag-is-provided
+  - Gabriel의 답변을 보면 CRA의 내부설정에 문제가 있는 듯 하다.
+
+- Property "memo" does not exist on type "unknown"
+
+  - useSelector 콜백에서 state.memo 참조하는 부분에서 발생..
+
+- Module not found: Can't resolve '@reducers/memo.ts' in /...
+
+  - tsconfig.extend.json에 경로를 제대로 명시해주지 않았다..^^;
+
+- An import path cannot end with a '.ts' extension
+
+  - import ... from "@reducers/memo.ts" 에서 발생
+  - https://bobbyhadz.com/blog/typescript-import-path-cannot-end-with-tsx-extension
