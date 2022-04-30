@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components": ["./src/components/*"],
+      "@reducers": ["./src/reducers/*"]
+    },
+    "esModuleInterop": true,
+    "include": ["./src/**/*.{ts, tsx}"],
+    "jsx": "react"
+  }
+}
