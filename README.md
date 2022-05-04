@@ -73,3 +73,6 @@ UI / UX
 
   - import ... from "@reducers/memo.ts" 에서 발생
   - https://bobbyhadz.com/blog/typescript-import-path-cannot-end-with-tsx-extension
+
+- useSelector의 state를 typing하지 않았을 때 하위 스테이트를 참조하기 위해 dot notation을 사용할 수 없었던 문제
+  - [How to type react-reducer useSelector](https://stackoverflow.com/questions/60238482/how-to-type-react-reduxs-useselector)
