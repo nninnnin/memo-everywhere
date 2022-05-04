@@ -11,7 +11,6 @@ function Focusing() {
   const focusing = useSelector((state: State) => state.todo.focusing);
   const dispatch = useDispatch();
 
-  const [isFocused, setIsFocused] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [todo, setTodo] = useState("");
   const [showContextMenu, setShowContextMenu] = useState(false);
@@ -31,6 +30,7 @@ function Focusing() {
   }, []);
 
   const setEditModeTrue = () => {
+    setTodo("");
     setEditMode(true);
   };
 
@@ -38,7 +38,6 @@ function Focusing() {
     e.preventDefault();
     e.stopPropagation();
 
-    setIsFocused(true);
     setContextPosition({
       top: e.clientY,
       left: e.clientX + 10,
@@ -50,10 +49,8 @@ function Focusing() {
     <>
       <span
         className={`p-2 ${
-          isFocused ? "bg-black" : "bg-red-200"
-        } transition-all ${
-          editMode ? "" : "hover:bg-black"
-        } hover:cursor-pointer select-none`}
+          editMode || showContextMenu ? "bg-black" : "bg-red-200"
+        } ${editMode ? "" : "hover:bg-black"} hover:cursor-pointer select-none`}
         onContextMenu={handleContentMenuOpen}
       >
         {editMode ? (
@@ -69,7 +66,6 @@ function Focusing() {
               }
             }}
             onBlur={() => {
-              setIsFocused(false);
               setEditMode(false);
             }}
             autoFocus
