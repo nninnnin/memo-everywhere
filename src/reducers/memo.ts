@@ -1,15 +1,8 @@
 import { createSlice, PayloadAction, nanoid } from "@reduxjs/toolkit";
 
-interface Memo {
-  id: string;
-  title: string | null;
-  contents: string | null;
-}
+import { MemoState, Memo } from "@typeDefinition";
 
-const initialState: {
-  memoList: { byId: Array<Memo>; allIds: Array<string> };
-  currentMemo: Memo;
-} = {
+const initialState: MemoState = {
   memoList: {
     allIds: [],
     byId: [],

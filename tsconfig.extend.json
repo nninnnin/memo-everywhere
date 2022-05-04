@@ -3,7 +3,8 @@
     "baseUrl": ".",
     "paths": {
       "@components": ["./src/components/*"],
-      "@reducers": ["./src/reducers/*"]
+      "@reducers": ["./src/reducers/*"],
+      "@typeDefinition": ["./index.d.ts"]
     },
     "esModuleInterop": true,
     "include": ["./src/**/*.{ts, tsx}"],
