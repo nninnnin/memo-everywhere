@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+
 // @ts-ignore
 import ContextMenu from "@components/ContextMenu.tsx";
+// @ts-ignore
+import { setFocusing } from "@reducers/todo.ts";
 import { State } from "../../index";
 
 function Focusing() {
   const focusing = useSelector((state: State) => state.todo.focusing);
+  const dispatch = useDispatch();
 
+  const [isFocused, setIsFocused] = useState(false);
+  const [editMode, setEditMode] = useState(false);
+  const [todo, setTodo] = useState("");
   const [showContextMenu, setShowContextMenu] = useState(false);
   const [contextPosition, setContextPosition] = useState({
     top: 0,
@@ -23,15 +30,18 @@ function Focusing() {
     };
   }, []);
 
+  const setEditModeTrue = () => {
+    setEditMode(true);
+  };
+
   const handleContentMenuOpen = (e) => {
     e.preventDefault();
     e.stopPropagation();
 
-    const { width, height } = e.target.getBoundingClientRect();
-
+    setIsFocused(true);
     setContextPosition({
-      top: e.clientY - height * 0.3,
-      left: e.clientX - width * 0.02,
+      top: e.clientY,
+      left: e.clientX + 10,
     });
     setShowContextMenu((prev) => !prev);
   };
@@ -39,12 +49,41 @@ function Focusing() {
   return (
     <>
       <span
-        className={`p-2 bg-red-200 hover:cursor-pointer select-none`}
+        className={`p-2 ${
+          isFocused ? "bg-black" : "bg-red-200"
+        } transition-all ${
+          editMode ? "" : "hover:bg-black"
+        } hover:cursor-pointer select-none`}
         onContextMenu={handleContentMenuOpen}
       >
-        {focusing}
+        {editMode ? (
+          <input
+            type="text"
+            className="bg-black border-0 outline-none"
+            value={todo}
+            onChange={(e) => setTodo(e.target.value)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                dispatch(setFocusing(todo));
+                setEditMode(false);
+              }
+            }}
+            onBlur={() => {
+              setIsFocused(false);
+              setEditMode(false);
+            }}
+            autoFocus
+          />
+        ) : (
+          focusing
+        )}
       </span>
-      {showContextMenu && <ContextMenu contextPosition={contextPosition} />}
+      {showContextMenu && (
+        <ContextMenu
+          contextPosition={contextPosition}
+          handleTextEditButtonClick={setEditModeTrue}
+        />
+      )}
     </>
   );
 }

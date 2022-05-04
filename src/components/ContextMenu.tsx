@@ -1,7 +1,9 @@
 import React from "react";
-import { useDispatch } from "react-redux";
 
-function ContextMenu({ contextPosition: { left, top }, handleOnBlur }) {
+function ContextMenu({
+  contextPosition: { left, top },
+  handleTextEditButtonClick,
+}) {
   return (
     <div
       className="fixed bg-white"
@@ -14,7 +16,7 @@ function ContextMenu({ contextPosition: { left, top }, handleOnBlur }) {
       <ul className="flex flex-around flex-col">
         <li
           className="hover:bg-slate-200 hover:cursor-pointer text-black p-2"
-          onClick={() => {}}
+          onClick={handleTextEditButtonClick}
         >
           텍스트
         </li>
