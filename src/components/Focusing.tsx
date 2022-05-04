@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import Confetti from "react-confetti";
 
 // @ts-ignore
 import ContextMenu from "@components/ContextMenu.tsx";
@@ -11,6 +12,7 @@ function Focusing() {
   const focusing = useSelector((state: State) => state.todo.focusing);
   const dispatch = useDispatch();
 
+  const [onConfetti, setOnConfetti] = useState(false);
   const [editMode, setEditMode] = useState(false);
   const [todo, setTodo] = useState("");
   const [showContextMenu, setShowContextMenu] = useState(false);
@@ -50,7 +52,10 @@ function Focusing() {
       <span
         className={`p-2 ${
           editMode || showContextMenu ? "bg-black" : "bg-red-200"
-        } ${editMode ? "" : "hover:bg-black"} hover:cursor-pointer select-none`}
+        } ${
+          editMode ? "" : "hover:bg-black"
+        } hover:cursor-pointer select-none relative overflow-hidden`}
+        onClick={() => setOnConfetti((prev) => !prev)}
         onContextMenu={handleContentMenuOpen}
       >
         {editMode ? (
@@ -74,6 +79,14 @@ function Focusing() {
           />
         ) : (
           focusing
+        )}
+        {onConfetti && (
+          <Confetti
+            className="absolute top-0 left-0"
+            width={500}
+            height={500}
+            colors={["#ffffff"]}
+          />
         )}
       </span>
       {showContextMenu && (
