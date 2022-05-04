@@ -61,6 +61,8 @@ function Focusing() {
             onChange={(e) => setTodo(e.target.value)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
+                if (!todo) return;
+
                 dispatch(setFocusing(todo));
                 setEditMode(false);
               }
