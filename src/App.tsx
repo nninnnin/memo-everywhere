@@ -1,10 +1,14 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useDispatch } from "react-redux";
 
+// @ts-ignore
 import Navigator from "@components/Navigator.tsx";
+// @ts-ignore
 import MemoDetail from "@components/MemoDetail.tsx";
+// @ts-ignore
 import Header from "@components/Header.tsx";
+// @ts-ignore
 import { hydrate } from "@reducers/memo.ts";
 
 const memoId1 = uuidv4();
