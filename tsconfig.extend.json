@@ -1,14 +1,16 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@components": ["./src/components/*"],
-      "@pages": ["./src/pages/*"],
-      "@reducers": ["./src/reducers/*"],
-      "@typeDefinition": ["./index.d.ts"]
+      "@components/*": ["src/components/*"],
+      "@pages/*": ["src/pages/*"],
+      "@reducers/*": ["src/reducers/*"],
+      "@typeDefinition": ["types/index.d.ts"],
+      "@typeDefinition/*": ["types/*"]
     },
-    "esModuleInterop": true,
-    "include": ["./src/**/*.{ts, tsx}"],
-    "jsx": "react"
-  }
+    "jsx": "react",
+    "moduleResolution": "node",
+    "esModuleInterop": true
+  },
+  "include": ["src", "types"]
 }

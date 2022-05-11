@@ -1,5 +1,6 @@
 declare module "@reducers/memo";
 declare module "@reducers/todo";
+declare module "@typeDefinitions";
 
 export declare type TodoState = {
   focusing: string;
