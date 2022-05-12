@@ -17,7 +17,7 @@ export declare type MemoState = {
   currentMemo: Memo;
 };
 
-export declare type State = {
+export declare type GlobalState = {
   todo: TodoState;
   memo: MemoState;
 };

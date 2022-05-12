@@ -1,10 +1,10 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import { State } from "@typeDefinition";
+import { GlobalState } from "@typeDefinition";
 
 function MemoDetail() {
-  const memo = useSelector((state: State) => state.memo.currentMemo);
+  const memo = useSelector((state: GlobalState) => state.memo.currentMemo);
 
   return (
     <div className="main bg-green-400 flex-1">

@@ -2,10 +2,10 @@ import React from "react";
 import { useSelector, useDispatch } from "react-redux";
 // @ts-ignore
 import { setCurrentMemo } from "@reducers/memo.ts";
-import { State } from "@typeDefinition";
+import { GlobalState } from "@typeDefinition";
 
 function Navigator() {
-  const memo = useSelector((state: State) => state.memo);
+  const memo = useSelector((state: GlobalState) => state.memo);
   const memoList = memo.memoList;
 
   const dispatch = useDispatch();

@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-import { TodoState } from "../../index";
+import { TodoState } from "@typeDefinition";
 
 const initialState: TodoState = {
   focusing: "꿈꿔 그리구 숨셔",

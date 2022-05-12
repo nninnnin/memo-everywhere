@@ -6,10 +6,10 @@ import Confetti from "react-confetti";
 import ContextMenu from "@components/ContextMenu.tsx";
 // @ts-ignore
 import { setFocusing } from "@reducers/todo.ts";
-import { State } from "../../index";
+import { GlobalState } from "@typeDefinition";
 
 function Focusing() {
-  const focusing = useSelector((state: State) => state.todo.focusing);
+  const focusing = useSelector((state: GlobalState) => state.todo.focusing);
   const dispatch = useDispatch();
 
   const [onConfetti, setOnConfetti] = useState(false);
